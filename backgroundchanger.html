@@ -1,0 +1,25 @@
+<html>
+<head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<script>
+let backgroundhistory = [];
+setTimeout(changeBackground, 1000);
+function getRandomColor() {
+  return "#"+((1<<24)*Math.random()|0).toString(16)
+}
+function changeBackground() {
+  let randomColor;
+  while (randomColor === undefined || backgroundhistory.includes(randomColor)) {
+    randomColor = getRandomColor();
+  }
+  backgroundhistory.push(randomColor);
+  $("body").css("background-color", randomColor);
+  if (backgroundhistory.length < 10) {
+    setTimeout(changeBackground, 1000);
+  }
+}
+</script>
+<body>
+</body>
+</html>
